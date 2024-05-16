@@ -1,4 +1,4 @@
-# PythonWEB演習 A
+# PythonWEB演習
 
 ## 概要
 WEB基礎で作成したKujiraCafeを動的コンテンツで再構築する。
