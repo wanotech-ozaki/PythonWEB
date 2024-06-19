@@ -16,10 +16,21 @@ Networkのタブを開くと通信の詳細を見ることができる。
 <img src="images/networktab.png">
 
 ## Python と Web
+### Pythonで作られているWebサービス
+- YouTube
+- Instagram
+- Spotify
+- Dropbox
+- Pinterest
+- Evernote
+
+注）全てがPythonだけで作られている訳ではありません
+
+### Python Web技術
 PythonでWebシステムを構築するにはいくつかの方法がある。
 - CGIライブラリ：現在非推奨
 - Django：Pythonの代表的なフレームワーク(フル装備)
-- Flask：Pythonの代表的なフレームワーク(必要最低限から拡張)
+- Flask：Pythonの代表的なフレームワーク(比較的軽量、必要最低限から拡張)
 - Bottle：機能は少ないが軽量でシンプルなフレームワーク
 
 今回の実習ではFlaskを利用して、KujiraCafeを動的なサイトに改良していく。
@@ -63,6 +74,12 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8800, debug=True)
 ```
 
+現時点でのディレクトリとファイルの構成
+```
+├── web
+│   └── main.py
+```
+
 ## Flaskを起動する
 ターミナルで
 ```
@@ -100,7 +117,9 @@ def index():
     return render_template("test.html")
 
 ```
-render_templateを使うと、templatesフォルダ内の指定されたファイルをレスポンスします。
+`render_template`を使うと、templatesフォルダ内の指定されたファイルをレスポンスします。
+デフォルトでtemplatesフォルダを利用する設定になっています。
+変更したい場合は、Flaskコンストラクタの引数に`template_folder=`のオプションを渡します。
 
 ### テンプレートにデータを渡す
 テンプレートファイルにはPythonからデータを渡す事が出来ます。
@@ -123,7 +142,13 @@ def index():
 ```
 
 ブラウザからどのように変わったか確認してみましょう。
-
+現時点でのディレクトリとファイルの構成
+```
+├── web
+│   ├── main.py
+│   └── templates
+│       └── test.html
+```
 ## Flask URLコントローラーと既存コンテンツを紐づける
 
 ## Excelデータの取得とWebコンテンツの動的生成
