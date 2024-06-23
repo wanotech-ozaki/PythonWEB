@@ -149,14 +149,38 @@ def index():
 │   └── templates
 │       └── test.html
 ```
-## Flask URLコントローラーと既存コンテンツを紐づける
+## 静的ファイルの取り扱い
+動的要素のない静的なファイルの取り扱いを学びます。
+CSSファイル(css/style.css)をリンクさせてましょう。
 
-## Excelデータの取得とWebコンテンツの動的生成
+```python main.py
+#....中略....
+# Flaskインスタンスを生成
+app = Flask(__name__,static_folder='static')
+#....中略....
+```
 
-## カテゴリー検索機能の実装(POSTとセッション)
+```html:test.html
+    <!-- 中略 -->
+    <title>Flask Test</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+```
+作業フォルダ内にstaticフォルダを作成、staticフォルダ内にcssフォルダを作成、cssフォルダ内にcssファイル(`style.css`)を作成します。
 
-## 課題　お知らせ機能の実装
+```css:style.css
+p{
+    color:#f00;
+}
+```
 
-## 課題イメージ
-  
-<img src="images/kujiracafe.png">
+現時点でのディレクトリとファイルの構成
+```
+├── web
+    ├── main.py
+    ├── static
+    │   └── css
+    │       └── style.css
+    └── templates
+        └── test.html
+```
