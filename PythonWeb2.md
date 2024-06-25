@@ -165,4 +165,73 @@ app.pyの`def index()`を呼び出しています。
 ***Review!!!***   
 acess/menu/contactのページも全て修正してKujiraCafeが正しく動くようにしてみましょう。
 
+## テンプレートの継承
+Flaskテンプレートに親子関係をつくり、継承することが出来ます。
+
+### テンプレートの共通部分を親テンプレートにする
+各HTMLで共通する部分を`base.html`として保存する。  
+差し替えする部分を`{% blcok block名 %}{% endblock %}`で置き換えます。  
+今回は`titleタグ`、`h1.heroタグ`、`mainタグ`を置き換えます。
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} KUZIRA CAFE</title>
+    <link rel="stylesheet" href="statics/css/style.css">
+</head>
+<body id="top">
+    <!-- ヘッダー -->
+    <header class="header">
+        #### 略 #### 
+    </header>
+    <!-- ヘッダーここまで -->
+    <h1 class="hero index">{% block hero %}{% endblock %}</h1>
+    <!-- メイン -->
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    <!-- メインここまで -->
+    <!-- フッター -->
+    <footer>
+        #### 略 #### 
+    </footer>
+    <!-- フッターここまで -->
+</body>
+</html>
+```
+###　base.htmlを継承して子テンプレートを作成 
+`index.html`を`base.html`を継承して上書きします。
+```html
+{% extends 'base.html' %}
+
+{% block title %}TOP{% endblock %}
+
+{% block hero %}たのしい、ひとときを{% endblock %}
+
+{% block main %}
+<main>
+    <div class="logo-whale"><img src="statics/images/logo-whale.svg" alt=""></div>
+    <p>一杯のコーヒーで、ゆったり泳ぐクジラのような安らぎとくつろぎを。正面には太平洋、裏手は山、近くには田んぼがあってのんびりした雰囲気の小さなカフェですが、日常を離れて、思い思いのひとときをお過ごしください。</p>
+    <img src="statics/images/banner.jpg" alt="旬のいちごを使ったメニューが期間限定で登場！">
+
+    <div id="news">
+        <h2>お知らせ</h2>
+        #### 略 #### 
+    </div>
+
+    <div id="shop">
+        <h2>店舗情報</h2>
+        #### 略 #### 
+    </div>
+</main>
+{% endblock %}
+```
+
+***Review!!!***   
+acess/menu/contactのページでもテンプレートの継承にチャレンジしてみましょう。
+
 [以降はPythonWeb3.mdに続く](PythonWeb3.md)
