@@ -65,11 +65,11 @@ app = Flask(__name__)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8800, debug=True)
 ```
-ルーティング設定が出来ていないのでページは表示されません。
+ルーティング設定が出来ていないのでページは表示されません。  
 正常に動作していることを確認してください。
 
 ### ルーティングの設定
-URLとプログラム動作の関係をルーティングと言います。
+URLとプログラム動作の関係をルーティングと言います。  
 リクエストされたURLと動作するメソッドを紐つけることでWebアプリケーションを管理します。この役割を**コントローラー**といいます。
 
 URLと各ページの関係は下記の通りとします。
@@ -90,10 +90,18 @@ app.pyを編集します。
 def index():
     return render_template('index.html')
 ```
-トップページが表示されていることを確認します。
+トップページが表示されていることを確認します。  
 CSSが適用されていません、また画像が表示されていません。
 
 ### 静的コンテンツを有効に
+app.pyで`statics`ディレクトリを有効にします。
+```python
+from flask import Flask,render_template
+
+app = Flask(__name__,static_folder='statics')
+# 以下略
+```
+
 
 index.htmlのcssリンクを環境に合わせます。
 ```html
@@ -108,9 +116,10 @@ CSSが有効になったことをブラウザで確認します。
     <a href="index.html"><img src="statics/images/logo.svg" alt="KUZIRA CAFE"></a>
 </div>
 ```
-画像が表示されていることを確認しましょう。
+画像が表示されていることを確認しましょう。  
 確認出来たら、他の画像も更新してください。
 
+変更場所が多いとコピペでミスが発生しやくなります。  
 検索置換を使ってみましょう。  
 ![置換](./images/VScode_replace.png)
 
@@ -126,7 +135,7 @@ TOPページにはページ内アンカーポイントへのリンクが設定�
 <li><a href="index.html#shop">店舗情報</a></li>
 ```
 
-これはFlaskによりURLが`http://xxxx/index.html`から`http://xxx/`に変更されたためです。
+これはFlaskによりURLが`http://xxxx/index.html`から`http://xxx/`に変更されたためです。  
 このルールに合わせてリンクを変更します。
 
 ```html
@@ -147,7 +156,7 @@ TOPページにはページ内アンカーポイントへのリンクが設定�
 ```html
 <li><a href="/">ホーム</a></li>
 ```
-これは`url_for関数`を用いて直接メソッドを呼び出すように書き直せる  
+これは`url_for関数`を用いて直接メソッドを呼び出すことも可能です。    
 app.pyの`def index()`を呼び出しています。
 ```html
 <li><a href="{{url_for('index')}}">ホーム</a></li>
