@@ -203,7 +203,7 @@ Flaskテンプレートに親子関係をつくり、継承することが出来
 </body>
 </html>
 ```
-###　base.htmlを継承して子テンプレートを作成 
+### base.htmlを継承して子テンプレートを作成 
 `index.html`を`base.html`を継承して上書きします。
 ```html
 {% extends 'base.html' %}
