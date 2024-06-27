@@ -1,3 +1,4 @@
 html_dir/*
 datas/描画.svg
-kujira_cafe/*
+kujira_cafe/statics/*
+kujira_cafe/templates/*
