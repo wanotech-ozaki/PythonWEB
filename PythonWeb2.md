@@ -2,16 +2,18 @@
 
 ## KujiraCafeの再構築
 
-実際にKujiraCafeのデータをFlaskで再構築していきます。
+実際にKujiraCafeのデータをFlaskで再構築していきます。  
 *VSCodeで作業する前提です。
 
 ### KujiraCafeのデータを配置
 
-`デスクトップ`に新しいディレクトリ(フォルダ)を作成します。ディレクトリ名は`kujira_cafe`とします。
+`デスクトップ`に新しいディレクトリ(フォルダ)を作成します。  
+ディレクトリ名は`kujira_cafe`とします。  
+Web基礎で作成したデータを新しく作った`kujira_cafe`ディレクトリに移動します。
 
-`kujira_cafe`直下に`templates`と`statics`ディレクトリを作成。  
-`templates`内に全ての`htmlファイル`を移動。  
-`statics`ディレクトリ直下に`css`と`images`ディレクトリを移動します。
+- `kujira_cafe`直下に`templates`と`statics`ディレクトリを作成。  
+- `templates`内に全てのhtmlファイルを移動。  
+- `statics`ディレクトリ直下に`css`と`images`ディレクトリを移動します。
 
 pythonファイル`app.py`を`kujira_cafe`直下に作成します。
 
@@ -53,7 +55,7 @@ pythonファイル`app.py`を`kujira_cafe`直下に作成します。
 ## Flask URLコントローラーと既存コンテンツを紐づける
 
 ### app.pyを編集する
-`kujira_cafe`ディレクトリ直下のapp.pyを作成します。(すでに作成済みの場合は編集します。)
+`kujira_cafe`ディレクトリ直下の`app.py`を編集します。
 
 ```python
 from flask import Flask,render_template
@@ -69,10 +71,13 @@ if __name__ == "__main__":
 正常に動作していることを確認してください。
 
 ### ルーティングの設定
-URLとプログラム動作の関係をルーティングと言います。  
-リクエストされたURLと動作するメソッドを紐つけることでWebアプリケーションを管理します。この役割を**コントローラー**といいます。
+リクエストされたURLと処理するメソッドを対応づけることを**ルーティング**といいます。
+この役割を**controller**といいます。  
+今回は`app.py`に`controller`の役割を持たせています。  
 
-URLと各ページの関係は下記の通りとします。
+`templates`ディレクトリに含まれるHTMLは画面の表示(`View`)を担当します。
+
+URL、メソッド、Viewの関係は下記の通りとします。
 
 | URL | method | 関数名 | テンプレート |
 | ---- | ---- |  ---- | ---- |
@@ -136,7 +141,7 @@ TOPページにはページ内アンカーポイントへのリンクが設定�
 ```
 
 これはFlaskによりURLが`http://xxxx/index.html`から`http://xxx/`に変更されたためです。  
-このルールに合わせてリンクを変更します。
+このルールに合わせてアンカータグのhref属性を変更します。
 
 ```html
 <li><a href="/">ホーム</a></li>
@@ -157,7 +162,7 @@ TOPページにはページ内アンカーポイントへのリンクが設定�
 <li><a href="/">ホーム</a></li>
 ```
 これは`url_for関数`を用いて直接メソッドを呼び出すことも可能です。    
-app.pyの`def index()`を呼び出しています。
+下の例はapp.pyの`def index()`を呼び出しています。
 ```html
 <li><a href="{{url_for('index')}}">ホーム</a></li>
 ```
