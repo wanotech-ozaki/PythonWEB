@@ -52,7 +52,7 @@ pip list
 JupyterLab上で表示 > ファイルブラウザを選択、ファイル一覧を表示します。  
 新しいフォルダを作成し、webという名前をつけましょう。  
 作成したwebフォルダを開き、ランチャーからpythonファイルを作成します。  
-ファイル名をmain.pyに変更します。  
+ファイル名を`main.py`に変更します。  以下`main.py`の内容です。
 ```
 # Flaskをインポート
 from flask import Flask
@@ -93,7 +93,8 @@ URL：http://localhost:8800/
 メソッドに直接HTMLを書くのは実用的ではありませんのでテンプレート機能を利用してHTMLファイルを呼び出しましょう。
 
 呼び出すファイルを作成します。
-ファイルはwebフォルダ直下、templatesフォルダ内にtest.htmlとして保存します。
+ファイルはwebフォルダ直下、templatesフォルダ内に`test.html`として保存します。
+HTMLファイルの内容です。
 ```html:test.html
 <!DOCTYPE html>
 <html lang="ja">
@@ -107,7 +108,7 @@ URL：http://localhost:8800/
 </body>
 </html>
 ```
-
+pythonファイルを修正します。
 ```python:main.py
 from flask import Flask, render_template
 
@@ -122,7 +123,8 @@ def index():
 変更したい場合は、Flaskコンストラクタの引数に`template_folder=`のオプションを渡します。
 
 ### テンプレートにデータを渡す
-テンプレートファイルにはPythonからデータを渡す事が出来ます。
+テンプレートファイルにはPythonからデータを渡す事が出来ます。  
+pythonファイルの修正
 
 ```python:main.py
 from flask import Flask, render_template
@@ -134,8 +136,7 @@ def index():
     current = datetime.datetime.today().strftime('%Y年%m月%d日')
     return render_template("test.html",current=current)
 ```
-テンプレートファイルを編集します。
-
+テンプレートのHTMLファイルを編集します。
 ```html:test.html
 <p>Flask Template!</p>
 <p>{{current}}</p>
@@ -154,13 +155,14 @@ def index():
 動的要素のない静的なファイルの取り扱いを学びます。
 CSSファイル(css/style.css)をリンクさせてましょう。
 
+Pythonファイルの修正
 ```python main.py
 #....中略....
 # Flaskインスタンスを生成
 app = Flask(__name__,static_folder='static')
 #....中略....
 ```
-
+HTMLファイルの修正
 ```html:test.html
     <!-- 中略 -->
     <title>Flask Test</title>
@@ -168,6 +170,7 @@ app = Flask(__name__,static_folder='static')
 </head>
 ```
 作業フォルダ内にstaticフォルダを作成、staticフォルダ内にcssフォルダを作成、cssフォルダ内にcssファイル(`style.css`)を作成します。
+CSSファイルの内容
 
 ```css:style.css
 p{
