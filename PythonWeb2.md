@@ -165,6 +165,7 @@ TOPページにはページ内アンカーポイントへのリンクが設定�
 下の例はapp.pyの`def index()`を呼び出しています。
 ```html
 <li><a href="{{url_for('index')}}">ホーム</a></li>
+<li><a href="{{url_for('index')}}#news">お知らせ</a></li>
 ```
 
 ***Review!!!***   
