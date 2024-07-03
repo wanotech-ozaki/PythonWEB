@@ -194,7 +194,8 @@ Flaskテンプレートに親子関係をつくり、継承することが出来
         #### 略 #### 
     </header>
     <!-- ヘッダーここまで -->
-    <h1 class="hero index">{% block hero %}{% endblock %}</h1>
+     <!-- ヘッダーここまで -->
+    {% block hero %}{% endblock %}
     <!-- メイン -->
     <main>
         {% block main %}
@@ -216,7 +217,7 @@ Flaskテンプレートに親子関係をつくり、継承することが出来
 
 {% block title %}TOP{% endblock %}
 
-{% block hero %}たのしい、ひとときを{% endblock %}
+{% block hero %}<h1 class="hero index">たのしい、ひとときを</h1>{% endblock %}
 
 {% block main %}
 <main>
