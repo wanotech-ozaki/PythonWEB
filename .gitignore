@@ -3,4 +3,5 @@ datas/描画.svg
 kujira_cafe/templates/*
 kujira_cafe/models/*
 kujira_cafe/app.py
+kujira_cafe/__pycache__
 PythonWeb4.md
